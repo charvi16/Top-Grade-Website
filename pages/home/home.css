@@ -1,0 +1,178 @@
+.hero {
+          min-height: 100vh;
+          background: linear-gradient(135deg, #4169E1 0%, #7C9885 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: white;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+          background-size: cover;
+        }
+
+        /* 3D Book Element */
+        .book-3d {
+          position: absolute;
+          right: 10%;
+          top: 50%;
+          transform: translateY(-50%);
+          perspective: 1000px;
+          z-index: 3;
+        }
+
+        .book {
+          width: 300px;
+          height: 400px;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: floatRotate 8s ease-in-out infinite;
+        }
+
+        .book-face {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 8px;
+        }
+
+        .book-front {
+          background: linear-gradient(135deg, #F5F7FA 0%, #B5B682 100%);
+          transform: translateZ(25px);
+          box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: #2E2E2E;
+          font-weight: bold;
+          font-size: 1.5rem;
+          border: 3px solid #4169E1;
+        }
+
+        .book-back {
+          background: linear-gradient(135deg, #B5B682 0%, #7C9885 100%);
+          transform: translateZ(-25px) rotateY(180deg);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-spine {
+          background: linear-gradient(135deg, #4169E1 0%, #2E2E2E 100%);
+          width: 50px;
+          height: 100%;
+          left: -25px;
+          transform: rotateY(-90deg) translateZ(25px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+
+        .book-top {
+          background: #F5F7FA;
+          width: 100%;
+          height: 50px;
+          top: -25px;
+          transform: rotateX(90deg) translateZ(25px);
+        }
+
+        .book-bottom {
+          background: #B5B682;
+          width: 100%;
+          height: 50px;
+          bottom: -25px;
+          transform: rotateX(-90deg) translateZ(25px);
+        }
+
+        .book-pages {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+          background: white;
+          border-radius: 4px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.9rem;
+          color: #2E2E2E;
+          line-height: 1.4;
+        }
+
+        .book-title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+          color: #4169E1;
+        }
+
+        @keyframes floatRotate {
+          0%, 100% {
+            transform: translateY(-20px) rotateX(5deg) rotateY(15deg);
+          }
+          25% {
+            transform: translateY(-10px) rotateX(-5deg) rotateY(-10deg);
+          }
+          50% {
+            transform: translateY(-30px) rotateX(10deg) rotateY(20deg);
+          }
+          75% {
+            transform: translateY(-5px) rotateX(-10deg) rotateY(-5deg);
+          }
+        }
+
+        .hero-content {
+          max-width: 800px;
+          padding: 2rem;
+          position: relative;
+          z-index: 2;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+          margin-bottom: 1rem;
+          animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+          font-size: 1.3rem;
+          margin-bottom: 2rem;
+          opacity: 0.9;
+          animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background: rgba(255, 255, 255, 0.2);
+          color: white;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-radius: 50px;
+          font-weight: bold;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+          background: white;
+          color: #4169E1;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }

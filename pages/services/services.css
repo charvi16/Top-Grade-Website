@@ -1,0 +1,81 @@
+
+
+        .service-container {
+         padding: 6rem 0;
+          background: #F5F7FA;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+          color: #2E2E2E;
+          position: relative;
+        }
+
+        .section-title::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(135deg, #4169E1 0%, #7C9885 100%);
+          border-radius: 2px;
+        }
+
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+        }
+
+        .service-card {
+          background: white;
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+          border: 1px solid rgba(65, 105, 225, 0.1);
+        }
+
+        .service-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+          border-color: #4169E1;
+        }
+
+        .service-icon {
+          width: 60px;
+          height: 60px;
+          background: linear-gradient(135deg, #4169E1 0%, #7C9885 100%);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+          color: white;
+        }
+
+        .service-card h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: #2E2E2E;
+        }
+
+        .service-card p {
+          color: #666;
+          margin-bottom: 1rem;
+        }
+
+        .service-price {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #4169E1;
+        }
