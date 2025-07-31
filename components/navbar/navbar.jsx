@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import './navbar.css';
 
 function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   const scrollToSection = (sectionId) => {
@@ -36,7 +37,11 @@ function Navbar() {
         <div className="logo">
           Top-Grade
         </div>
-        <ul className="nav-links">
+        <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        ☰
+      </button>
+
+        <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
           <li><button onClick={() => scrollToSection('home')}>Home</button></li>
           <li><button onClick={() => scrollToSection('services')}>Services</button></li>
           <li><button onClick={() => scrollToSection('pricing')}>Pricing</button></li>

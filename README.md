@@ -13,6 +13,4 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 to do:
-responsive
 chatbot
-form submission

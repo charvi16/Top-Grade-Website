@@ -1,0 +1,38 @@
+To connect the form to excel, we have used google sheet > extension > App Script
+This is the script used in it:
+function doPost(e) {
+  try {
+    // Replace 'YOUR_SPREADSHEET_ID' with your actual spreadsheet ID
+    const sheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID').getActiveSheet();
+    
+    // Log the received data for debugging
+    console.log('Received data:', e.parameter);
+    
+    // Get form data from parameters
+    const name = e.parameter.name || '';
+    const email = e.parameter.email || '';
+    const subject = e.parameter.subject || '';
+    const message = e.parameter.message || '';
+    
+    // Add data to spreadsheet
+    sheet.appendRow([new Date(), name, email, subject, message]);
+    
+    // Return success response
+    return ContentService
+      .createTextOutput(JSON.stringify({result: 'success', message: 'Data saved successfully'}))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (error) {
+    console.error('Error:', error);
+    return ContentService
+      .createTextOutput(JSON.stringify({result: 'error', message: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// Handle GET requests (for testing)
+function doGet(e) {
+  return ContentService
+    .createTextOutput('Google Apps Script is working!')
+    .setMimeType(ContentService.MimeType.TEXT);
+}

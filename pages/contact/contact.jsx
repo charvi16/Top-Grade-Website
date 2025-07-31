@@ -19,23 +19,40 @@ function Contact() {
     }));
   };
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Simple validation
+
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       alert('Please fill in all fields');
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Thank you for your message! We will get back to you within 24 hours.');
+
+    try {
+      // Debug: Log the data being sent
+      console.log('Sending data:', formData);
+
+      // Try GET request first (easier to debug)
+      const testUrl = `https://script.google.com/macros/s/AKfycbxJFNgC8i7FpRJkaBwTSxaMCls8OU87cMmhD64WKTTu_Hft1diVQnSd3cFzDJYQ6SSS/exec?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&subject=${encodeURIComponent(formData.subject)}&message=${encodeURIComponent(formData.message)}`;
+      
+      console.log('Request URL:', testUrl);
+
+      const response = await fetch(testUrl, {
+        method: 'GET',
+        mode: 'no-cors'
+      });
+
+      console.log('Response received');
+      alert('Data sent! Please check your Google Sheet to see if it was added.');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      setIsSubmitting(false);
-    }, 2000);
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error: ' + error.message);
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -43,7 +60,7 @@ function Contact() {
           <div className="contact-container">
             <div className="contact-info">
               <h2>Get In Touch</h2>
-              <p>Ready to get started? Contact us today for professional assignment help. Our team is available 24/7 to assist you.</p>
+              <p>Ready to get started? Contact us today for professional assignment help. Our team is available 24/7 to assist you.(To Upload a Document please click on To Upload)</p>
               <div className="contact-details">
                 <div className="contact-item">
                   <div className="contact-icon">📞</div>
@@ -60,6 +77,10 @@ function Contact() {
                 <div className="contact-item">
                   <div className="contact-icon">⚡</div>
                   <span>Quick Response Time</span>
+                </div>
+                <div className="contact-item" onClick={() => window.open("https://forms.gle/iNMgAxSQrhXamgFv8", "_blank")}>
+                    <div className="contact-icon">🗂️</div>
+                    <span>To Upload </span>
                 </div>
               </div>
             </div>
@@ -117,4 +138,4 @@ function Contact() {
   )
 }
 
-export default Contact
+export default Contact  

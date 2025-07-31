@@ -20,7 +20,8 @@
 }
 
 .logo {
-    font-size: 1.8rem;
+    white-space: nowrap;
+    font-size: 4vh;
     font-weight: bold;
     background: linear-gradient(135deg, #4169E1 0%, #7C9885 100%);
     -webkit-background-clip: text;
@@ -64,4 +65,38 @@
 
 .nav-links button:hover::after {
     width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* === Responsive Styles === */
+@media (max-width: 630px) {
+  .menu-toggle {
+    display: block;
+    color: black;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Appears just below the navbar */
+    right: 0;
+    background: #f5ecec;
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
 }
